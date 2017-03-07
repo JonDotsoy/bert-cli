@@ -12,7 +12,7 @@ const bert = require('bert')
 
 const node = bert.agent('node', {image: 'node:7.7.0'})
 
-bert.task('info', () => {
+bert.task('taskInfo', () => {
     node.sh('node --version') 
     bert.sh('node --version') 
 })
@@ -21,14 +21,23 @@ bert.task('info', () => {
 ### Run the next script
 
 ```bash
-$ bert info
+$ bert -V taskInfo
 [bert] Prepare agent node (node:7.7.0)
-[bert:agent] > docker pull node:7.7.0
-[bert:agent] > docker run -t -d -u 112:116 -w ******** -v ******** -v ******** -e ******** --entrypoint cat node:7.7.0
-[bert:agent] node> node --version
+[bert:run] > docker pull node:7.7.0
+[bert:run] > docker run -t -d -u 112:116 -w ******** -v ******** -v ******** -e ******** --entrypoint cat node:7.7.0
+[bert:run] node> node --version
 v7.7.0
-[bert:agent] > node --version
+[bert:run] > node --version
 v7.6.0
+```
+
+### Optional: Clear rm you agents
+
+```bash
+$ bert -V --clear
+[bert] Prepare to remove node (node:7.7.0)
+[bert:run] > docker stop --time=1 ********
+[bert:run] > docker rm -f ********
 ```
 
 Features (Commands):
