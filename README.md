@@ -26,7 +26,7 @@ const bert = require('bert')
 /* ==================== */
 
 bert.stage('node')
-// CMD Equivalent: docker create node
+// CMD Equivalent: docker create node:latest
 /* Content .bertlook.json
 {
   "stages": {
