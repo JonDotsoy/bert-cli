@@ -23,11 +23,11 @@ bert.task('info', () => {
 ```bash
 $ bert info
 [bert] Prepare agent node (node:7.7.0)
-[bert:system] > docker pull node:7.7.0
-[bert:system] > docker run -t -d -u 112:116 -w ******** -v ******** -v ******** -e ******** --entrypoint cat node:7.7.0
-[bert:agent] node > node --version
+[bert:agent] > docker pull node:7.7.0
+[bert:agent] > docker run -t -d -u 112:116 -w ******** -v ******** -v ******** -e ******** --entrypoint cat node:7.7.0
+[bert:agent] node> node --version
 v7.7.0
-[bert:system] node > node --version
+[bert:agent] > node --version
 v7.6.0
 ```
 
