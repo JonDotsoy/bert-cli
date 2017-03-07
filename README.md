@@ -1,6 +1,8 @@
 # 🍹 Bert
 A task manager inspired on Gulp.
 
+> This document content the specifications to build the client to Bert.
+
 Features (Commands):
 - [ ] Help
 - [ ] Init a project with Bert
