@@ -1,0 +1,13 @@
+{
+  "name": "bert.js",
+  "version": "0.0.1",
+  "description": "A task manager inspired on Gulp.",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Jonathan Delgado <hi@jon.soy>",
+  "license": "MIT",
+  "devDependencies": {
+    "minimist": "^1.2.0"
+  }
+}
