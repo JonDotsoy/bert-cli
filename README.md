@@ -1,6 +1,8 @@
 # 🍹 Bert
 A task manager inspired on Gulp.
 
+> This document content the specifications to build the client to Bert.
+
 ## Quick start
 
 ### Step 1: Write a `.bert.js` file
