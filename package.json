@@ -3,11 +3,19 @@
   "version": "0.0.1",
   "description": "A task manager inspired on Gulp.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "env": "env"
+  },
   "keywords": [],
   "author": "Jonathan Delgado <hi@jon.soy>",
   "license": "MIT",
   "devDependencies": {
+    "dotenv": "^4.0.0",
     "minimist": "^1.2.0"
+  },
+  "dependencies": {
+    "git-head": "^1.19.0",
+    "hosted-git-info": "^2.2.0",
+    "npm": "^4.3.0"
   }
 }
