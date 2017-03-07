@@ -1,6 +1,34 @@
 # 🍹 Bert
 A task manager inspired on Gulp.
 
+## Quick start
+
+### Step 1: Write a `.bert.js` file
+
+```javascript
+const bert = require('bert')
+
+const node = bert.agent('node', {image: 'node:7.7.0'})
+
+bert.task('info', () => {
+    node.sh('node --version') 
+    bert.sh('node --version') 
+})
+```
+
+### Run the next script
+
+```bash
+$ bert info
+[bert] Prepare agent node (node:7.7.0)
+[bert] $ docker pull node:7.7.0
+[bert] $ docker run -t -d -u 112:116 -w ******** -v ******** -v ******** -e ******** --entrypoint cat node:7.7.0
+[bert:agent] node: node --version
+v7.7.0
+[bert:system] node: node --version
+v7.6.0
+```
+
 Features (Commands):
 - [ ] Help
 - [ ] Init a project with Bert
