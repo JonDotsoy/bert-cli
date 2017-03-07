@@ -18,7 +18,7 @@ bert.task('taskInfo', () => {
 })
 ```
 
-### Run the next script
+### Run the task
 
 ```bash
 $ bert -V taskInfo
@@ -28,6 +28,28 @@ $ bert -V taskInfo
 [bert:run] node> node --version
 v7.7.0
 [bert:run] > node --version
+v7.6.0
+```
+
+### Run the task on clear environment
+
+```bash
+$ bert -V --empty taskInfo
+[WARNING] This is not possible load local agent without docker.
+[bert] Prepare agent node (node:7.7.0)
+[bert:run] > docker pull node:7.7.0
+[bert:run] > docker run -t -d -u 112:116 -w ******** -v ******** -v ******** -e ******** --entrypoint cat node:7.7.0
+[bert:run] node> node --version
+v7.7.0
+```
+
+### Run silet task
+
+```bash
+$ bert taskInfo
+node> node --version
+v7.7.0
+> node --version
 v7.6.0
 ```
 
