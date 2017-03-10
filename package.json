@@ -1,21 +1,40 @@
 {
-  "name": "bert.js",
-  "version": "0.0.1",
+  "name": "@jondotsoy/bert",
+  "version": "0.0.3",
   "description": "A task manager inspired on Gulp.",
   "main": "index.js",
   "scripts": {
-    "env": "env"
+    "env": "env",
+    "test": "mocha --harmony-async-await",
+    "testw": "mocha --harmony-async-await -w"
+  },
+  "bin": {
+    "bert.js": "bert.js"
   },
   "keywords": [],
   "author": "Jonathan Delgado <hi@jon.soy>",
   "license": "MIT",
   "devDependencies": {
+    "chai": "^3.5.0",
     "dotenv": "^4.0.0",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "mocha": "^3.2.0"
   },
   "dependencies": {
     "git-head": "^1.19.0",
     "hosted-git-info": "^2.2.0",
+    "lodash": "^4.17.4",
     "npm": "^4.3.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonDotsoy/bert-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JonDotsoy/bert-cli/issues"
+  },
+  "homepage": "https://jondotsoy.github.io/bert/"
 }

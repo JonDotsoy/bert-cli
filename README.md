@@ -135,3 +135,17 @@ bert.stage('pepe', {
 ```
 
 
+## What is an Agent
+
+## Project Structure
+
+- `bin/`: The script to use bert on console.
+- `lib/`:
+    - `dotBert/`: Working with the `.bert.js` file.
+    - `engine/`: Working with the diferent engines.
+        - `docker/`: working with the docker engine. 
+
+
+
+
+
