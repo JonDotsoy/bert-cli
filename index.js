@@ -1,5 +1,6 @@
 const ShellAgent = require('./lib/agents/Shell')
 const DockerAgent = require('./lib/agents/Docker')
+const pkg = require('./package.json')
 
 class Bert {
   constructor ({
@@ -58,14 +59,13 @@ class Bert {
   }
 
   async sh (cmd) {
-
-    
-
   }
 }
 
 Object.defineProperty(Bert.prototype, 'Bert', { value: Bert })
 Object.defineProperty(Bert, 'Bert', { value: Bert })
+Object.defineProperty(Bert.prototype, 'version', { value: pkg.version })
+Object.defineProperty(Bert, 'version', { value: pkg.version })
 
 // default instance
 const bert = new Bert()
@@ -75,3 +75,4 @@ exports = module.exports = Object.defineProperties(bert, {
   default: { value: bert },
   bert: { value: bert }
 })
+

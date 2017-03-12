@@ -3,18 +3,22 @@ const path = require('path')
 const {jsonToENV} = require('../lib/jsonToENV')
 const dotEnv = require('dotenv')
 const dotBert = require('../lib/dotBert')
+const debugLib = require('../lib/debug')
 
 const argv = require('minimist')(process.argv.slice(2), {
   boolean: [
     'help',
+    'verbose',
     'skip-env'
   ],
   alias: {
     help: 'h',
-    env: 'e'
+    env: 'e',
+    verbose: 'V',
   },
   default: {
     env: [],
+    verbose: false,
     workdir: null,
     'skip-dotenv': false,
     'skip-env': false,
@@ -42,19 +46,29 @@ const argvEnv = [].concat(
 argv.env = argvEnv
 argv.bertConfig = dotBert.setup({silent: true, bertfile: argv.bertfile, workdir: argv.workdir})
 
-console.log(argv.bertConfig)
+argv.debug = debugLib({verbose: argv.verbose})
 
-function setup (argv) {
+if (argv.bertConfig.workdir) {
+  argv.debug.verbose('Change workdir to "%s"', argv.bertConfig.workdir)
+  process.chdir(argv.bertConfig.workdir)
+}
+
+
+/**
+ * This is a setup function.
+ *
+ * @param {object}   argv   - The arguments by line command. Rreference of minimist 
+ * @param {String[]} argv._
+ */
+async function setup (argv) {
+  // clone the argv parameter
   const args = [...argv._]
 
   const help = () => require('../lib/help').call(this, args, argv)
 
   let arg = args.shift()
 
-  switch (arg) {
-    case 't':
-      return null
-
+  switch ( arg ) {
     case 'i':
     case 'info':
       return require('../lib/info').call(this, args, argv)
@@ -73,3 +87,6 @@ function setup (argv) {
 }
 
 setup(argv)
+  .catch(err => {
+    console.error(err)
+  })
