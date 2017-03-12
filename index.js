@@ -1,4 +1,5 @@
 const ShellAgent = require('./lib/agents/Shell')
+const BertSymbol = require('bert-symbol')
 const DockerAgent = require('./lib/agents/Docker')
 const pkg = require('./package.json')
 
@@ -8,10 +9,13 @@ class Bert {
     defaultAgentOpts = {},
     defaultSetAgent = DockerAgent
   } = {}) {
+    // Tagger
+    this[BertSymbol] = true
+
     this.agents = {}
     this.tasks = {}
 
-    this.defaultAgent = this.agent('default', defaultAgentOpts, ShellAgent)
+    this.defaultAgent = this.agent('default', defaultAgentOpts, defaultAgent)
     this.defaultSetAgent = defaultSetAgent
   }
 
