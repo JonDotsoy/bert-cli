@@ -15,7 +15,7 @@ class Bert {
     this.agents = {}
     this.tasks = {}
 
-    this.defaultAgent = this.agent('default', defaultAgentOpts, defaultAgent)
+    this.defaultAgent = new defaultAgent()
     this.defaultSetAgent = defaultSetAgent
   }
 
@@ -36,6 +36,7 @@ class Bert {
     return this.agents[name]
   }
 
+  // Make a task
   task (arg0, arg1, arg2) {
     const name = String(arg0)
 
@@ -53,16 +54,35 @@ class Bert {
       fn = arg1
     }
 
-    this.tasks[name] = {
+    this.tasks[name] = new Task({
       name,
       dep: [].concat(dep).filter(Boolean).map(String),
-      fn
-    }
+      fn,
+      bert: this
+    })
 
     return this
   }
 
-  async sh (cmd) {
+  async sh (...args) {
+    return this.defaultAgent.sh(...args)
+  }
+}
+
+// task control
+class Task {
+  constructor ({
+    name, dep, fn, bert
+  }) {
+    Object.assign(this, {name, dep, fn, bert})
+  }
+
+  async start () {
+    await Promise.all(this.dep.map(d=>this.bert.tasks[d].start()))
+
+    console.log(`start task ${this.name}`)
+
+    await this.fn()
   }
 }
 
@@ -79,4 +99,3 @@ exports = module.exports = Object.defineProperties(bert, {
   default: { value: bert },
   bert: { value: bert }
 })
-

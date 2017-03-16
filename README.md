@@ -3,6 +3,15 @@ A task manager inspired on Gulp.
 
 > This document content the specifications to build the client to Bert.
 
+## Features
+- [x] Structure to cli `> bert [command]`.
+- [ ] **DotBert**: How to read and how to work.
+- [ ] Run process que bert `<engine>.sh`.
+- [ ] Run this process on gulp.
+- [ ] Make tasks with gulp.
+
+
+
 ## Quick start
 
 ### Step 1: Write a `.bert.js` file
