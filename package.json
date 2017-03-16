@@ -4,7 +4,7 @@
   "description": "A task manager inspired on Gulp.",
   "main": "index.js",
   "scripts": {
-    "postpublish": "sh -C \"git tag v$package_npm_version\"",
+    "postpublish": "sh -c \"git tag v$npm_package_version\"",
     "env": "env",
     "test": "mocha --harmony-async-await",
     "testw": "mocha --harmony-async-await -w"
