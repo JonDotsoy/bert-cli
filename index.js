@@ -13,9 +13,9 @@ util.inherits(Bert, Orchestrator)
 Bert.prototype.agent = function (name, opts = {}) {
   const agents = this.agents || {}
 
-  const agent = new DockerAgent(opts)
+  const agent = new DockerAgent(Object.assign(opts, {name}))
 
-  agents[name] = Object.assign(agent, {name})
+  agents[name] = agent
 
   this.agents = agents
 
