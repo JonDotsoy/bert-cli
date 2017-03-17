@@ -17,6 +17,11 @@ localBert.on('task_stop', function ({task, duration}) {
   console.log(logger.stopTask(task, duration))
 })
 
+localBert.on('task_err', function ({task, message, err}) {
+  console.log(logger.errTask(task, message, err.stack))
+  process.exit(1)
+})
+
 const bertfile = path.join(process.cwd(), argv.bertfile)
 
 async function run () {
@@ -27,3 +32,4 @@ async function run () {
 }
 
 run()
+
