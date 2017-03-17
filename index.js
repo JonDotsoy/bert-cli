@@ -18,13 +18,16 @@ Bert.prototype.agent = function (name, opts = {}) {
 
   agents[name] = agent
 
+  agent._sh = agent.sh
+  agent.sh = function (args, opts) { return agent._sh.call(agent, args, opts, getStackTrace(2)) }
+
   this.agents = agents
 
   return agents[name]
 }
 
 Bert.prototype.shell = new ShellAgent()
-Bert.prototype.sh = function () { return this.shell.sh.apply(this.shell, arguments) }
+Bert.prototype.sh = function (args, opts) { return this.shell.sh.call(this.shell, args, opts, getStackTrace(1)) }
 
 Bert.prototype.task = Bert.prototype.add
 
@@ -32,8 +35,8 @@ Bert.prototype.task = Bert.prototype.add
 Bert.prototype.Bert = Bert
 
 /* Put the current stacktrace on .sh() */
-function transferSH () {
-  const tr = stackTrace.get()
+function getStackTrace (n) {
+  return stackTrace.get()[n]
 }
 
 var inst = new Bert()
