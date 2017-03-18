@@ -22,14 +22,17 @@ localBert.on('task_err', function ({task, message, err}) {
   process.exit(1)
 })
 
+global.bert = localBert
 const bertfile = path.join(process.cwd(), argv.bertfile)
 
 async function run () {
   /* Load task bert */
-  require(bertfile)
+  // try {
+    require(bertfile)
+  // } catch (ex) {throw ex}
 
   localBert.start('default')
 }
 
 run()
-
+.catch(err => console.error(err))
