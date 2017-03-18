@@ -10,8 +10,6 @@ A task manager inspired on Gulp.
 - [ ] Run this process on gulp.
 - [ ] Make tasks with gulp.
 
-
-
 ## Quick start
 
 ### Step 1: Write a `.bert.js` file
@@ -62,7 +60,7 @@ v7.7.0
 v7.6.0
 ```
 
-### Optional: Clear rm you agents
+### ✖ Optional: Clear rm you agents
 
 ```bash
 $ bert -V --clear
@@ -80,7 +78,7 @@ Show a list to help.
 
     $ bert [help|h|--help|-h]
 
-## Feature: Init
+## ✖ Feature: Init
 
 Initialize a Bert file (`.bert.js`).
 

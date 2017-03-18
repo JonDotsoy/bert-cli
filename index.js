@@ -2,6 +2,7 @@
 
 const stackTrace = require('stack-trace')
 const util = require('util')
+const glob = require('glob')
 const Orchestrator = require('orchestrator')
 const ShellAgent = require('./lib/agents/Shell')
 const DockerAgent = require('./lib/agents/Docker')
