@@ -95,49 +95,21 @@ const bert = require('bert')
 
 bert.stage('node')
 // CMD Equivalent: docker create node:latest
-/* Content .bertlook.json
-{
-  "stages": {
-    "node": "36c4536996ca5615dcf9911f068786dc/a441b15fe9a3cf56661190a0b93b9dec7d04127288cc87250967cf3b52894d11"
-  }
-}
-*/
 
 bert.stage('node', {
   image: 'node:7.7.0'
 })
 // CMD Equivalent: docker create  node:7.7.0
-/* Content .bertlook.json
-{
-  "stages": {
-    "node": "36c4536996ca5615dcf9911f068786dc/a441b15fe9a3cf56661190a0b93b9dec7d04127288cc87250967cf3b52894d11"
-  }
-}
-*/
 
 bert.stage('node', {
   tag: '7.7.0'
 })
 // CMD Equivalent: docker create node:7.7.0
-/* Content .bertlook.json
-{
-  "stages": {
-    "node": "36c4536996ca5615dcf9911f068786dc/a441b15fe9a3cf56661190a0b93b9dec7d04127288cc87250967cf3b52894d11"
-  }
-}
-*/
 
 bert.stage('pepe', {
   image: 'node:7.7.0'
 })
 // CMD Equivalent: docker create node:7.7.0
-/* Content .bertlook.json
-{
-  "stages": {
-    "pepe": "36c4536996ca5615dcf9911f068786dc/a441b15fe9a3cf56661190a0b93b9dec7d04127288cc87250967cf3b52894d11"
-  }
-}
-*/
 
 ```
 
@@ -151,8 +123,3 @@ bert.stage('pepe', {
     - `dotBert/`: Working with the `.bert.js` file.
     - `engine/`: Working with the diferent engines.
         - `docker/`: working with the docker engine. 
-
-
-
-
-
