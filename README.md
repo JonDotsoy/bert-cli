@@ -6,7 +6,7 @@ A task manager inspired on Gulp.
 ## Features
 - [x] Structure to cli `> bert [command]`.
 - [ ] **DotBert**: How to read and how to work.
-- [ ] Run process que bert `<engine>.sh`.
+- [ ] Run process with:  `<engine>.sh`.
 - [ ] Run this process on gulp.
 - [ ] Make tasks with gulp.
 
