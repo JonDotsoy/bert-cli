@@ -9,12 +9,22 @@ A task manager inspired on Gulp.
 - [x] Run process with:  `<engine>.sh`.
 - [x] Run this process on gulp.
 
+## Usage
+```bash
+# Install bert.js
+npm install --global bert.js
+# Install in you proyect
+npm install --save-dev bert.js
+# Run It
+bert
+```
+
 ## Quick start
 
 ### Step 1: Write a `.bert.js` file
 
 ```javascript
-const bert = require('bert')
+const bert = require('bert.js')
 
 const node = bert.agent('node', {image: 'node:7.7.0'})
 
