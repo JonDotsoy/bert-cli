@@ -34,22 +34,24 @@ localBert.on('task_start', function ({task}) {
 })
 
 localBert.on('task_stop', function ({task, duration}) {
-  if (countRunClears === 0) {
-    process.nextTick(() => {
-      localBert.start('clear containers')
-    })
-  }
-
   console.log(logger.stopTask(task, duration))
 })
 
 localBert.on('task_err', function ({task, message, err}) {
   console.log(logger.errTask(task, message, err.stack))
+
   process.exit(1)
 })
 
 localBert.task('clear containers', async () => {
   countRunClears += 1
+
+  const taskLoaded = getTasksToLoad()
+  const doneTasks = taskLoaded.map(task => localBert.tasks[task].done)
+
+  console.log(localBert)
+
+  console.log(doneTasks)
 
   if (every(getTasksToLoad().map(task => localBert.tasks[task].done), Boolean)) {
     await Promise.all(Object.keys(localBert.agents).map(agent => localBert.agents[agent].rmContainer({silent: !true})))
@@ -63,7 +65,29 @@ async function run () {
   /* Load task bert */
   require(bertfile)
 
-  getTasksToLoad().map(e => localBert.start(e))
+  const tasksToLoad = getTasksToLoad()
+  const serieTasks = []
+
+  tasksToLoad.forEach(taskName => {
+    if (taskName in localBert.tasks) {
+      const task = localBert.tasks[taskName]
+      const isSerie = task.dep[localBert.Bert.prototype.toSerieTag] === true
+
+      if (isSerie) {
+          serieTasks.push.apply(serieTasks, task.dep)
+      } else {
+          serieTasks.push(taskName)
+      }
+    } else {
+      throw new Error(`"${taskName}" Tasks is not found.`)
+    }
+  })
+
+  for (let i = 0; i < serieTasks.length; i+=1) {
+    const taskName = serieTasks[i]
+
+    await new Promise(resolve => localBert.start(taskName, resolve))
+  }
 }
 
 run()

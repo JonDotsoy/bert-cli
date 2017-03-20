@@ -31,6 +31,17 @@ Bert.prototype.sh = function (args, opts) { return this.shell.sh(args, opts/*, g
 
 Bert.prototype.task = Bert.prototype.add
 
+/* serie */
+Bert.prototype.toSerieTag = Symbol('bert.toSerieTag')
+
+Bert.prototype.serie = function (..._tasks) {
+  const tasks = Array.prototype.concat.apply([], _tasks)
+
+  return Object.defineProperties(tasks, {
+    [Bert.prototype.toSerieTag]: { value: true }
+  })
+}
+
 // Let people use this class from our instance
 Bert.prototype.Bert = Bert
 
