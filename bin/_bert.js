@@ -46,16 +46,7 @@ localBert.on('task_err', function ({task, message, err}) {
 localBert.task('clear containers', async () => {
   countRunClears += 1
 
-  const taskLoaded = getTasksToLoad()
-  const doneTasks = taskLoaded.map(task => localBert.tasks[task].done)
-
-  console.log(localBert)
-
-  console.log(doneTasks)
-
-  if (every(getTasksToLoad().map(task => localBert.tasks[task].done), Boolean)) {
-    await Promise.all(Object.keys(localBert.agents).map(agent => localBert.agents[agent].rmContainer({silent: !true})))
-  }
+  await Promise.all(Object.keys(localBert.agents).map(agent => localBert.agents[agent].rmContainer({silent: true})))
 })
 
 global.bert = localBert
@@ -81,6 +72,10 @@ async function run () {
       throw new Error(`"${taskName}" Tasks is not found.`)
     }
   })
+
+  if (serieTasks.length !== 0) {
+    serieTasks.push('clear containers')
+  }
 
   for (let i = 0; i < serieTasks.length; i+=1) {
     const taskName = serieTasks[i]
