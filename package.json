@@ -1,10 +1,11 @@
 {
   "name": "bert.js",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A task manager inspired on Gulp.",
   "main": "index.js",
   "scripts": {
     "postpublish": "sh -c \"git tag v$npm_package_version\"",
+    "gulp": "gulp --gulpfile .gulp.js",
     "env": "env",
     "standard": "standard --fix",
     "nsp": "nsp",
