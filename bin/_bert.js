@@ -25,8 +25,6 @@ const localBertPath = process.env.BERT_MODE_DEV
 
 const localBert = require(localBertPath)
 
-console.log(localBert)
-
 const getTasksToLoad = () => argv._.length === 0 ? ['default'] : argv._
 
 let countRunClears = 0
