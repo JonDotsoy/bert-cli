@@ -3,9 +3,12 @@
   "version": "0.0.9",
   "description": "A task manager inspired on Gulp.",
   "main": "index.js",
+  "engines": {
+    "node": ">= 7.6.0"
+  },
   "scripts": {
     "postpublish": "sh -c \"git tag v$npm_package_version\"",
-    "gulp": "gulp --gulpfile .gulp.js",
+    "gulp": "node --harmony-async-await node_modules/gulp/bin/gulp.js --gulpfile .gulp.js",
     "env": "env",
     "standard": "standard --fix",
     "nsp": "nsp",
@@ -13,7 +16,7 @@
     "testw": "mocha --harmony-async-await -w"
   },
   "bin": {
-    "bert.js": "bin/bert.js"
+    "bert": "bin/bert.js"
   },
   "keywords": [],
   "author": "Jonathan Delgado <hi@jon.soy>",
