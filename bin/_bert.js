@@ -1,23 +1,31 @@
 #! /usr/bin/env node
 const path = require('path')
+const chalk = require('chalk')
 const resolve = require('resolve')
-
+const logger = require('../lib/logger')
 const every = require('lodash/every')
+
 const argv = require('minimist')(process.argv.slice(2), {
   default: {
     bertfile: '.bert.js'
   }
 })
-const logger = require('../lib/logger')
 
 /* Load instance to bert */
 const localBertPath = process.env.BERT_MODE_DEV
   ? '..'
-  : resolve.sync('bert.js', { basedir: process.cwd() })
+  : (() => {
+    try {
+      return resolve.sync('bert.js', { basedir: process.cwd() })
+    } catch (ex) {
+      console.error(chalk.red('ERROR: ') + chalk.reset(ex.message))
+      process.exit(1)
+    }
+  })()
 
-const localBert = require( localBertPath )
+const localBert = require(localBertPath)
 
-console.log( localBert )
+console.log(localBert)
 
 const getTasksToLoad = () => argv._.length === 0 ? ['default'] : argv._
 
