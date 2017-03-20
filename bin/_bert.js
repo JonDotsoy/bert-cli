@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 const path = require('path')
+const resolve = require('resolve')
 
 const every = require('lodash/every')
 const argv = require('minimist')(process.argv.slice(2), {
@@ -7,8 +8,12 @@ const argv = require('minimist')(process.argv.slice(2), {
     bertfile: '.bert.js'
   }
 })
-const localBert = require('..')
 const logger = require('../lib/logger')
+
+/* Load instance to bert */
+const localBert = process.env.BERT_MODE_DEV
+  ? require('..')
+  : resolve('bert.js', { basedir: process.cwd() })
 
 const getTasksToLoad = () => argv._.length === 0 ? ['default'] : argv._
 
