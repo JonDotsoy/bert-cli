@@ -13,11 +13,7 @@ const logger = require('../lib/logger')
 /* Load instance to bert */
 const localBertPath = process.env.BERT_MODE_DEV
   ? '..'
-  : resolve('bert.js', { basedir: process.cwd() })
-
-if (!localBertPath) {
-  throw new Error('bert is not found.')
-}
+  : resolve.sync('bert.js', { basedir: process.cwd() })
 
 const localBert = require( localBertPath )
 
