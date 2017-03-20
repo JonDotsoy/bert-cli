@@ -1,4 +1,4 @@
-# 🍹 Bert
+# 🍹 bert
 A task manager inspired on Gulp.
 
 ![](./assets/bert-bg.png)
