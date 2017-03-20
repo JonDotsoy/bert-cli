@@ -11,9 +11,17 @@ const argv = require('minimist')(process.argv.slice(2), {
 const logger = require('../lib/logger')
 
 /* Load instance to bert */
-const localBert = process.env.BERT_MODE_DEV
-  ? require('..')
+const localBertPath = process.env.BERT_MODE_DEV
+  ? '..'
   : resolve('bert.js', { basedir: process.cwd() })
+
+if (!localBertPath) {
+  throw new Error('bert is not found.')
+}
+
+const localBert = require( localBertPath )
+
+console.log( localBert )
 
 const getTasksToLoad = () => argv._.length === 0 ? ['default'] : argv._
 
