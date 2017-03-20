@@ -1,6 +1,6 @@
 'use strict'
 
-const stackTrace = require('stack-trace')
+// const stackTrace = require('stack-trace')
 const util = require('util')
 const Orchestrator = require('orchestrator')
 const ShellAgent = require('./lib/agents/Shell')
@@ -19,7 +19,7 @@ Bert.prototype.agent = function (name, opts = {}) {
   agents[name] = agent
 
   const originalSh = agent.sh
-  agent.sh = function (args, opts) { return originalSh.call(agent, args, opts, getStackTrace(2)) }
+  agent.sh = function (args, opts) { return originalSh.call(agent, args, opts/*, getStackTrace(2)*/) }
 
   this.agents = agents
 
@@ -27,7 +27,7 @@ Bert.prototype.agent = function (name, opts = {}) {
 }
 
 Bert.prototype.shell = new ShellAgent()
-Bert.prototype.sh = function (args, opts) { return this.shell.sh(args, opts, getStackTrace(1)) }
+Bert.prototype.sh = function (args, opts) { return this.shell.sh(args, opts/*, getStackTrace(1)*/) }
 
 Bert.prototype.task = Bert.prototype.add
 
@@ -35,9 +35,9 @@ Bert.prototype.task = Bert.prototype.add
 Bert.prototype.Bert = Bert
 
 /* Put the current stacktrace on .sh() */
-function getStackTrace (n) {
+/*function getStackTrace (n) {
   return stackTrace.get()[n]
-}
+}*/
 
 var inst = new Bert()
 module.exports = inst
