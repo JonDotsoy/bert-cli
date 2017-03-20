@@ -1,7 +1,7 @@
 # 🍹 Bert
 A task manager inspired on Gulp.
 
-![](./assets/bert-gb.png)
+![](./assets/bert-bg.png)
 
 ## Features
 - [x] Structure to cli `> bert [command]`.
