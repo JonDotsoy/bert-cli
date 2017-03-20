@@ -1,6 +1,6 @@
 {
   "name": "bert.js",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A task manager inspired on Gulp.",
   "main": "index.js",
   "engines": {
