@@ -1,7 +1,5 @@
 #! /usr/bin/env node
 const path = require('path')
-const querystring = require('querystring')
-const fs = require('fs')
 
 const every = require('lodash/every')
 const argv = require('minimist')(process.argv.slice(2), {
@@ -12,7 +10,7 @@ const argv = require('minimist')(process.argv.slice(2), {
 const localBert = require('..')
 const logger = require('../lib/logger')
 
-const getToLoadTasks = () => argv._.length === 0 ? ['default'] : argv._
+const getTasksToLoad = () => argv._.length === 0 ? ['default'] : argv._
 
 let countRunClears = 0
 
@@ -23,7 +21,7 @@ localBert.on('task_start', function ({task}) {
 localBert.on('task_stop', function ({task, duration}) {
   if (countRunClears === 0) {
     process.nextTick(() => {
-        localBert.start('clear containers')
+      localBert.start('clear containers')
     })
   }
 
@@ -38,7 +36,7 @@ localBert.on('task_err', function ({task, message, err}) {
 localBert.task('clear containers', async () => {
   countRunClears += 1
 
-  if (every(getToLoadTasks().map(task => localBert.tasks[task].done), Boolean)) {
+  if (every(getTasksToLoad().map(task => localBert.tasks[task].done), Boolean)) {
     await Promise.all(Object.keys(localBert.agents).map(agent => localBert.agents[agent].rmContainer({silent: !true})))
   }
 })
@@ -50,7 +48,7 @@ async function run () {
   /* Load task bert */
   require(bertfile)
 
-  getToLoadTasks().map(e => localBert.start(e))
+  getTasksToLoad().map(e => localBert.start(e))
 }
 
 run()

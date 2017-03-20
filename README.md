@@ -95,7 +95,7 @@ Initialize a Bert file (`.bert.js`).
 ## Espect .bert.js file
 
 ```javascript
-const bert = require('bert')
+const bert = require('bert.js')
 
 /* EXAMPLES WITH DOCKER */
 /* ==================== */

@@ -2,7 +2,6 @@
 
 const stackTrace = require('stack-trace')
 const util = require('util')
-const glob = require('glob')
 const Orchestrator = require('orchestrator')
 const ShellAgent = require('./lib/agents/Shell')
 const DockerAgent = require('./lib/agents/Docker')
@@ -19,8 +18,8 @@ Bert.prototype.agent = function (name, opts = {}) {
 
   agents[name] = agent
 
-  agent._sh = agent.sh
-  agent.sh = function (args, opts) { return agent._sh.call(agent, args, opts, getStackTrace(2)) }
+  const originalSh = agent.sh
+  agent.sh = function (args, opts) { return originalSh.call(agent, args, opts, getStackTrace(2)) }
 
   this.agents = agents
 
@@ -28,7 +27,7 @@ Bert.prototype.agent = function (name, opts = {}) {
 }
 
 Bert.prototype.shell = new ShellAgent()
-Bert.prototype.sh = function (args, opts) { return this.shell.sh.call(this.shell, args, opts, getStackTrace(1)) }
+Bert.prototype.sh = function (args, opts) { return this.shell.sh(args, opts, getStackTrace(1)) }
 
 Bert.prototype.task = Bert.prototype.add
 
