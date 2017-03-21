@@ -5,6 +5,7 @@ const util = require('util')
 const Orchestrator = require('orchestrator')
 const ShellAgent = require('./lib/agents/Shell')
 const DockerAgent = require('./lib/agents/Docker')
+const SSHAgent = require('./lib/agents/SSH')
 
 function Bert () {
   Orchestrator.call(this)
@@ -14,16 +15,28 @@ util.inherits(Bert, Orchestrator)
 Bert.prototype.agent = function (name, opts = {}) {
   const agents = this.agents || {}
 
-  const agent = new DockerAgent(Object.assign(opts, {name}))
+  const agent = new DockerAgent(Object.assign({}, opts, {name}))
 
   agents[name] = agent
 
-  const originalSh = agent.sh
-  agent.sh = function (args, opts) { return originalSh.call(agent, args, opts/*, getStackTrace(2)*/) }
+  // const originalSh = agent.sh
+  // agent.sh = function (args, opts) { return originalSh.call(agent, args, opts/*, getStackTrace(2)*/) }
 
   this.agents = agents
 
   return agents[name]
+}
+
+Bert.prototype.remote = function (name, opts = {}) {
+  const remotes = this.remotes || {}
+
+  const remote = new SSHAgent(Object.assign({}, opts, {name}))
+
+  remotes[name] = remote
+
+  this.remotes = remotes
+
+  return remotes[name]
 }
 
 Bert.prototype.shell = new ShellAgent()

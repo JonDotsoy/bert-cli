@@ -4,9 +4,9 @@ A task manager inspired on Gulp.
 ![🍹 > bert](./assets/bert-bg.png)
 
 ## Features
-- [x] Structure to cli `> bert [command]`.
+- [x] Structure to cli `> bert [...tasks]`.
 - [x] **DotBert**: How to read and how to work.
-- [x] Run process with:  `<engine>.sh`.
+- [x] Run process with:  `agent.sh()`.
 - [x] Run this process on gulp.
 
 ## Usage
