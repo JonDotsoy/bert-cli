@@ -1,6 +1,6 @@
 {
   "name": "bert.js",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "A child process async.",
   "main": "index.js",
   "engines": {
