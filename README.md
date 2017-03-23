@@ -19,7 +19,7 @@ npm install --save-dev bert.js
 bert
 ```
 
-## A example
+### A Example
 
 ```javascript
 const bert = require('bert.js')
