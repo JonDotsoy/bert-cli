@@ -1,9 +1,10 @@
 # 🍹 bert
 A child process async.
 
-#f1e05a
-
 ![🍹 > bert](./assets/bert-bg.png)
+
+## goals for bert
+> please get a 🍹 drink and write your goal to bert on a [new issue][].
 
 ## Features
 - [x] Structure to cli `> bert [...tasks]`.
@@ -134,3 +135,7 @@ bert.stage('pepe', {
     - `dotBert/`: Working with the `.bert.js` file.
     - `engine/`: Working with the diferent engines.
         - `docker/`: working with the docker engine. 
+
+
+[new issue]: https://github.com/JonDotsoy/bert-cli/issues/new
+

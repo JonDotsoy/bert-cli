@@ -18,7 +18,9 @@
   "bin": {
     "bert": "bin/bert.js"
   },
-  "keywords": [],
+  "keywords": [
+    "child_process"
+  ],
   "author": "Jonathan Delgado <hi@jon.soy>",
   "license": "MIT",
   "devDependencies": {
