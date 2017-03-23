@@ -1,6 +1,8 @@
 # 🍹 bert
 A child process to work with [Docker][].
 
+bert.js prepares an environment to load your command. it is useful to a used application without your local installation.
+
 ## What does Bert?
 Bert is a module to NodeJS, this provides an easily API to work with [child_process][] on you local machino or a container inside [Docker][].
 
