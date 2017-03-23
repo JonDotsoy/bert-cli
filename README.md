@@ -19,6 +19,18 @@ npm install --save-dev bert.js
 bert
 ```
 
+## A example
+
+```javascript
+const bert = require('bert.js')
+
+// Prepare the agent to node 7.7.0
+const node = bert.agent('node', { image: 'node:7.7.0' })
+
+// Many things
+node.sh(['node', '--version']) // v7.7.0
+```
+
 [new issue]: https://github.com/JonDotsoy/bert-cli/issues/new "New Issue"
 [child_process]: https://nodejs.org/api/child_process.html "Child Process"
 [Docker]: http://docker.io/ "A Better Way to Build Apps"
