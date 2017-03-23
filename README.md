@@ -1,8 +1,8 @@
 # 🍹 bert
-A child process async with [Docker][].
+A child process to work with [Docker][].
 
 ## What does Bert?
-Bert is a module to NodeJS, this provides an easily API to work with [child_process][] on you local machino or a container inside Docker.
+Bert is a module to NodeJS, this provides an easily API to work with [child_process][] on you local machino or a container inside [Docker][].
 
 ![🍹 > bert](./assets/bert-bg.png)
 
@@ -30,6 +30,7 @@ const node = bert.agent('node', { image: 'node:7.7.0' })
 // Many things
 node.sh(['node', '--version']) // v7.7.0
 ```
+
 
 [new issue]: https://github.com/JonDotsoy/bert-cli/issues/new "New Issue"
 [child_process]: https://nodejs.org/api/child_process.html "Child Process"
