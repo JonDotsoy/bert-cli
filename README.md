@@ -1,4 +1,5 @@
 # 🍹 bert
+Bert the child process.
 A task manager inspired on Gulp.
 
 ![🍹 > bert](./assets/bert-bg.png)
