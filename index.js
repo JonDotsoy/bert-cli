@@ -10,6 +10,7 @@ const SSHAgent = require('./lib/agents/SSH')
 function Bert () {
   Orchestrator.call(this)
 }
+
 util.inherits(Bert, Orchestrator)
 
 Bert.prototype.agent = function (name, opts = {}) {

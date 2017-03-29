@@ -7,12 +7,21 @@ const every = require('lodash/every')
 
 const argv = require('minimist')(process.argv.slice(2), {
   default: {
-    bertfile: '.bert.js'
-  }
+    bertfile: '.bert.js',
+    'global-bert': false
+  },
+  alias: {
+    'g': 'global-bert'
+  },
+  boolean: [
+    'global-bert'
+  ]
 })
 
+console.log(argv)
+
 /* Load instance to bert */
-const localBertPath = process.env.BERT_MODE_DEV
+const localBertPath = process.env.BERT_MODE_DEV || argv['global-bert'] === true
   ? '..'
   : (() => {
     try {
@@ -59,7 +68,7 @@ async function run () {
   const tasksToLoad = getTasksToLoad()
   const serieTasks = []
 
-  tasksToLoad.forEach(taskName => {
+  tasksToLoad.forEach((taskName) => {
     if (taskName in localBert.tasks) {
       const task = localBert.tasks[taskName]
 
@@ -77,7 +86,7 @@ async function run () {
     serieTasks.push('clear containers')
   }
 
-  for (let i = 0; i < serieTasks.length; i+=1) {
+  for (let i = 0; i < serieTasks.length; i += 1) {
     const taskName = serieTasks[i]
 
     await new Promise(resolve => localBert.start(taskName, resolve))
