@@ -18,8 +18,6 @@ const argv = require('minimist')(process.argv.slice(2), {
   ]
 })
 
-console.log(argv)
-
 /* Load instance to bert */
 const localBertPath = process.env.BERT_MODE_DEV || argv['global-bert'] === true
   ? '..'
